@@ -16,7 +16,11 @@ interface UrlObject {
   longUrl: string;
 }
 
-const History = () => {
+interface HistoryProps {
+  isLogged: boolean;
+}
+
+const History = ({isLogged}: HistoryProps) => {
   const { storedUrls, removeUrl } = useLocalStorage("urlList"); // Use the custom hook
   const { systemTheme, theme } = useTheme();
   const currentTheme = theme === "dark" ? systemTheme : theme;
@@ -100,7 +104,7 @@ const History = () => {
           History
         </h1>
         <button
-          className="h-10 w-30 right-0 top-0 my-1 mr-1 px-6 py-2 bg-blue-600 dark:bg-blue-700 rounded-xl text-white hover:bg-blue-500 dark:hover:bg-blue-600 mb-3"
+          className={`h-10 w-30 right-0 top-0 my-1 mr-1 px-6 py-2 bg-blue-600 dark:bg-blue-700 rounded-xl text-white hover:bg-blue-500 dark:hover:bg-blue-600 mb-3 ${isLogged ? "": ""}`}
           type="submit"
           onClick={() => {
             localStorage.removeItem("urlList"); // Clear only the relevant item
