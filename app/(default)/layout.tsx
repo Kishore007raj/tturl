@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "@/components/ui/navbar";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "url-shortener",
@@ -21,7 +22,10 @@ const layout = ({ children }: { children: React.ReactNode }) => {
       </h1>
       <div className="w-full flex-grow">{children}</div> {/* Added flex-grow */}
       <footer className="text-center text-gray-500 mt-8 py-4">
-        Built with 💻 by Murugaperumal R <br />© 2024 Murugaperumal R. All rights reserved.
+        <div className="opacity-50">
+          TTurl is an open-source project of
+        </div>
+        <Link href="https://github.com/TherkuTech/tturl" className="text-blue-700">Therku Tech</Link>
       </footer>
     </div>
   );
